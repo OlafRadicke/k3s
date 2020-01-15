@@ -4,7 +4,7 @@
   file:
     path: "/home/{{ ansible_user }}/.kube"
     state: directory
-    delegate_to: localhost
+  delegate_to: localhost
     
 - name: Pick up k3s config to bootstrap host
   synchronize:
