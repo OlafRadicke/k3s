@@ -1,0 +1,13 @@
+---
+
+- name: Create a directory 
+  file:
+    path: "/home/{{ ansible_user }}/.kube"
+    state: directory
+    delegate_to: localhost
+    
+- name: Pick up k3s config to bootstrap host
+  synchronize:
+    src: "rsync://{{ ansible_host }}/etc/rancher/k3s/k3s.yaml"
+    dest: "/home/{{ ansible_user }}/.kube/config"
+  delegate_to: localhost
